@@ -5,7 +5,6 @@ CREATE TABLE adventuregroup_events (
     name TEXT,
     location TEXT,
     date DATE NOT NULL DEFAULT CURRENT_DATE,
-    time TIME NOT NULL,
     type event_types NOT NULL,
     details TEXT NOT NULL,
     users_attending TEXT,

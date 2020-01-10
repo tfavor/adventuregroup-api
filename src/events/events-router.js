@@ -1,7 +1,8 @@
 const express = require('express')
 const EventsService = require('./Events-service')
 const path = require('path')
-const { requireAuth } = require('../middleware/basic-auth')
+const { requireAuth } = require('../middleware/jwt-auth')
+const AuthService = require('../auth/auth-service')
 
 const eventsRouter = express.Router()
 const jsonParser = express.json()
@@ -30,9 +31,9 @@ eventsRouter
         })
         .catch(next)
     })
-    .post(jsonParser, (req, res, next) => {
-        const { name, location, date, time, type, users_attending, creator_id, details } = req.body
-        const newEvent = { name, location, date, time, type, users_attending, details }
+    .post(requireAuth, jsonParser, (req, res, next) => {
+        const { name, location, date, type, users_attending, details } = req.body
+        const newEvent = { name, location, date, type, users_attending, details }
         for(const [key, value] of Object.entries(newEvent)) {
             if(value == null) {
                 return res.status(400).json({
@@ -40,7 +41,7 @@ eventsRouter
                 })
             }
         }
-        newEvent.creator_id = creator_id
+        newEvent.creator_id = AuthService.parseBasicToken()
         EventsService.insertEvent(
             req.app.get('db'),
             newEvent
@@ -53,6 +54,7 @@ eventsRouter
     })
 eventsRouter
     .route('/:event_id')
+    .all(requireAuth)
     .all((req, res, next) => {
         EventsService.getById(
             req.app.get('db'),

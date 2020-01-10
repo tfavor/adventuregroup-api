@@ -1,0 +1,1 @@
+/*ALTER TABLE adventuregroup_users DROP COLUMN IF EXISTS full_name;*/
