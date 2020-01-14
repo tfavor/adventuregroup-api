@@ -9,7 +9,8 @@ const jsonParser = express.json()
 const serializeAtttendee = attendee => ({
     id: attendee.id,
     event_id: attendee.event_id,
-    user_name: attendee.user_name
+    user_name: attendee.user_name,
+    creator: attendee.creator
 })
 
 attendingRouter
