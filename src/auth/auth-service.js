@@ -24,6 +24,7 @@ const AuthService = {
     })
   },
   parseBasicToken(token) {
+    console.log('here')
     return Buffer
       .from(token, 'base64')
       .toString()

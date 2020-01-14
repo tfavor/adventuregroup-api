@@ -115,7 +115,8 @@ describe('Attending Endpoints', () => {
         it(`responds with 201 created and the created instance`, () => {
             const newAttendee = {
                 event_id: 1,
-                user_name: 'user1'
+                user_name: 'user1',
+                creator: false
             }
             return supertest(app)
                 .post(`/api/attending`)

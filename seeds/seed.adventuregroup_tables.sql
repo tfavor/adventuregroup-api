@@ -35,14 +35,14 @@ VALUES
     ('event10', 'SanAntonio, Texas', '2019-06-23', 'biking', 'user3, user2', 4,
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing tristique risus nec feugiat in. Amet facilisis magna etiam tempor orci. Sapien et ligula ullamcorper malesuada. Tincidunt tortor aliquam nulla facilisi. Ac auctor augue mauris augue neque gravida. Enim nec dui nunc mattis enim ut tellus elementum. Purus sit amet luctus venenatis lectus magna fringilla urna. Laoreet non curabitur gravida arcu ac. Dignissim enim sit amet venenatis urna cursus eget. Mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien et. Egestas sed tempus urna et pharetra pharetra massa massa ultricies. Adipiscing diam donec adipiscing tristique risus nec feugiat in fermentum.');  
 
-INSERT INTO adventuregroup_attending (event_id, user_name)
+INSERT INTO adventuregroup_attending (event_id, user_name, creator)
 VALUES
-    (1, 'dunder'),
-    (2, 'dunder'),
-    (3, 'dunder'),
-    (1, 'b.deboop'),
-    (1, 'c.bloggs'),
-    (2, 's.smith'),
-    (3, 'b.deboop');
+    (1, 'dunder', 'false'),
+    (2, 'dunder', 'false'),
+    (3, 'dunder', 'true'),
+    (1, 'b.deboop', 'true'),
+    (1, 'c.bloggs', 'false'),
+    (2, 's.smith', 'false'),
+    (3, 'b.deboop', 'false');
 
 COMMIT;

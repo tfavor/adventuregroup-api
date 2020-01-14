@@ -15,8 +15,8 @@ const serializeAtttendee = attendee => ({
 attendingRouter
     .route('/')
     .post(requireAuth, jsonParser, (req, res, next) => {
-        const { user_name, event_id } = req.body
-        const newAttendee = { user_name }
+        const { user_name, event_id, creator } = req.body
+        const newAttendee = { user_name, creator }
         for(const [key, value] of Object.entries(newAttendee)) {
             if(value == null) {
                 return res.status(400).json({

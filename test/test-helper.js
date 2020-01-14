@@ -90,27 +90,32 @@ function makeAttendingArray() {
         {
             id: 1,
             event_id: 1,
-            user_name: 'user1'
+            user_name: 'user1',
+            creator: true
         },
         {
             id: 2,
             event_id: 2,
-            user_name: 'user1'
+            user_name: 'user1',
+            creator: false
         },
         {
             id: 3,
             event_id: 3,
-            user_name: 'user1'
+            user_name: 'user1',
+            creator: true
         },
         {
             id: 4,
             event_id: 1,
-            user_name: 'user2'
+            user_name: 'user2',
+            creator: false
         },
         {
             id: 5,
             event_id: 2,
-            user_name: 'user3'
+            user_name: 'user3',
+            creator: true
         },
     ]
 }

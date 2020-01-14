@@ -32,8 +32,12 @@ eventsRouter
         .catch(next)
     })
     .post(requireAuth, jsonParser, (req, res, next) => {
+        const token = req.header('Authorization').substring(7);
+        console.log(token)
+        const id = AuthService.parseBasicToken(token)[3]
+        const creator_id = parseInt(id);
         const { name, location, date, type, users_attending, details } = req.body
-        const newEvent = { name, location, date, type, users_attending, details }
+        const newEvent = { name, location, date, type, users_attending, creator_id, details }
         for(const [key, value] of Object.entries(newEvent)) {
             if(value == null) {
                 return res.status(400).json({
@@ -41,7 +45,6 @@ eventsRouter
                 })
             }
         }
-        newEvent.creator_id = AuthService.parseBasicToken()
         EventsService.insertEvent(
             req.app.get('db'),
             newEvent
